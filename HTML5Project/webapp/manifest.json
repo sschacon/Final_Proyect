@@ -101,26 +101,26 @@
                     "name": "menu",
                     "pattern": "",
                     "target": [
-                        "menu"
+                        "Targetmenu"
                     ]
                 },
                 {
                     "name": "CreateEmployee",
                     "pattern": "CreateEmployee",
                     "target": [
-                        "CreateEmployee"
+                        "TargetCreateEmployee"
                     ]
                 }
             ],
             "targets": {
-                "menu": {
+                "Targetmenu": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": true,
                     "viewId": "Menu",
                     "viewName": "Menu"
                 },
-                "CreateEmployee": {
+                "TargetCreateEmployee": {
                     "viewType": "XML",
                     "viewName": "CreateEmployee",
                     "viewId": "CreateEmployee",
