@@ -9,12 +9,14 @@
 					<content>
 	                <Panel expandable="true" headerText="{i18n>empleados}" width="auto" class="sapUiResponsiveMargin" expanded="true">
                         <content>
-                            	<GenericTile headerImage="sap-icon://add-employee"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  press="press">
+                            	<GenericTile headerImage="sap-icon://add-employee"  
+                                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  
+                                             press="onNavToCreateEmployee">
                                     <TileContent footer="{i18n>crearEmpleado}">
                                     </TileContent>
                                 </GenericTile>
                             	<GenericTile headerImage="sap-icon://employee-lookup"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  press="press">
-                                    <TileContent footer="{i18n>verEmpleados}">
+                                    <TileContent footer="{i18n>verEmpleado}">
                                     </TileContent>
                                 </GenericTile>                                
                         </content>
