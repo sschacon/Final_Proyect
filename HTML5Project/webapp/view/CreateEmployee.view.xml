@@ -1,9 +1,10 @@
-<mvc:View controllerName="logaligroup.HTML5Project.controller.CreateEmployee" 
+<mvc:View xmlns:core="sap.ui.core" 
           xmlns:mvc="sap.ui.core.mvc" 
-          displayBlock="true" 
-          xmlns="sap.m"
-          xmlns:core="sap.ui.core"
-          xmlns:f="sap.f">
+          xmlns="sap.m" 
+          controllerName="logaligroup.HTML5Project.controller.CreateEmployee" 
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:form="sap.ui.layout.form" 
+          xmlns:u="sap.ui.unified">
 	<Page id="wizardCreateEmployee"
           title="{i18n>crearEmpleado}">
 		<content>
@@ -24,9 +25,9 @@
                                 width="320px"
                                 selectionChange="setProductTypeFromSegmented">
                                 <items>
-                                    <SegmentedButtonItem text="{i18n>pass1Button1}"/>
-                                    <SegmentedButtonItem text="{i18n>pass1Button2}"/>
-                                    <SegmentedButtonItem text="{i18n>pass1Button3}"/>
+                                    <SegmentedButtonItem text="{i18n>pass1Button1}" press="toNavPass2"/>
+                                    <SegmentedButtonItem text="{i18n>pass1Button2}" press="toNavPass2"/>
+                                    <SegmentedButtonItem text="{i18n>pass1Button3}" press="toNavPass2"/>
                                 </items>
                             </SegmentedButton>
                         </HBox>                                  
@@ -36,25 +37,76 @@
 							validated="true">
                     <MessageStrip class="sapUiSmallMarginBottom"
                                   text="{i18n>textpass2}"
-                                  showIcon="true"/>                            
+                                  showIcon="true"/>     
+                        <form:SimpleForm
+                                editable="true">
+                            <Label text="{i18n>name}" required="true"/>
+                            <Input valueState="{/_FirstNameState}" change="checkDataEmployee" value="{/FirstName}"/>
+                            <Label text="{i18n>firstNames}" required="true"/>
+                            <Input valueState="{/_LastNameState}" change="checkDataEmployee" value="{/LastName}"/>
+                            <Label text="{= ${/_type} === 'autonomo' ? ${i18n>CIF} : ${i18n>DNI}}" required="true"/>
+                            <Input value="{/Dni}" valueState="{/_DniState}" change="checkDNI"></Input>
+                            <Label text="{= ${/_type} === 'autonomo' ? ${i18n>precioDiario} : ${i18n>salarioBrutoAnual}}"/>
+                            <VBox>
+                                <Slider value="{/_Salary}"
+                                    min="12000" 
+                                    max="80000"
+                                    step="1000" inputsAsTooltips="true" showAdvancedTooltip="true" enableTickmarks="true"
+                                        width="100%" progress="false" class="sapUiSmallMarginBottom" 
+                                        visible="{=  ${/_type} === 'interno'}">
+                                    <ResponsiveScale tickmarksBetweenLabels="100"/>
+                                </Slider>
+                                <Slider value="{/_Salary}"
+                                    min="100" 
+                                    max="2000"
+                                    step="100" inputsAsTooltips="true" showAdvancedTooltip="true" enableTickmarks="true"
+                                        width="100%" progress="false" class="sapUiSmallMarginBottom"
+                                        visible="{=  ${/_type} === 'autonomo'}">
+                                    <ResponsiveScale tickmarksBetweenLabels="100"/>
+                                </Slider>
+                                <Slider value="{/_Salary}"
+                                    min="50000" 
+                                    max="200000"
+                                    step="1000" inputsAsTooltips="true" showAdvancedTooltip="true" enableTickmarks="true"
+                                        width="100%" progress="false" class="sapUiSmallMarginBottom"
+                                        visible="{=  ${/_type} === 'gerente'}">
+                                    <ResponsiveScale tickmarksBetweenLabels="100"/>
+                                </Slider>
+                            </VBox>
+                            <Label text="{i18n>fechaIncorporacion}" required="true"></Label>
+                            <DatePicker dateValue="{/CreationDate}" valueState="{/_CreationDateState}" change="checkDataEmployee"></DatePicker>
+                        </form:SimpleForm>  
                 </WizardStep>           
                 <WizardStep id="WizardPass3"
 							title="{i18n>pass3}"
 							validated="true">
                     <MessageStrip class="sapUiSmallMarginBottom"
                                   text="{i18n>textpass3}"
-                                  showIcon="true"/>                            
+                                  showIcon="true"/>          
+	                        <Label text="{i18n>comentario}" width="100%"></Label>
+                            <TextArea value="{/Comments}" width="100%"></TextArea>
+                            <UploadCollection
+                                    id="UploadCollection"
+                                    maximumFilenameLength="55"
+                                    maximumFileSize="10"
+                                    multiple="true"
+                                    uploadUrl="/sap/opu/odata/sap/ZEMPLOYEES_SRV/Attachments"
+                                    sameFilenameAllowed="true"
+                                    instantUpload="false"
+                                    change="onChange"
+                                    beforeUploadStarts="onBeforeUploadStart"
+                                    noDataDescription="{i18n>arrastrarFicheros}" />                                                    
                 </WizardStep>                          
             </Wizard>
          </content>
         <footer >
             <Toolbar  >
-            	<ToolbarSpacer/>
+                <ToolbarSpacer/>
                 <Button type="Back"
                         text="Cancelar"
                         press="onBack">
                 </Button>
             </Toolbar>
         </footer>
-    </Page>
+        </Page>
 </mvc:View>
