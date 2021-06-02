@@ -110,7 +110,14 @@
                     "target": [
                         "TargetCreateEmployee"
                     ]
-                }
+                },
+                {
+                    "name": "DisplayEmployee",
+                    "pattern": "DisplayEmployee",
+                    "target": [
+                        "TargetDisplayEmployee"
+                    ]
+                },                
             ],
             "targets": {
                 "Targetmenu": {
@@ -126,7 +133,14 @@
                     "viewId": "CreateEmployee",
                     "transition": "slide",
                     "clearControlAggregation": true
-                }
+                },
+                "TargetDisplayEmployee": {
+                    "viewType": "XML",
+                    "viewName": "DisplayEmployee",
+                    "viewId": "DisplayEmployee",
+                    "transition": "slide",
+                    "clearControlAggregation": true
+                },                
             }
         }
     }

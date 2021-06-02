@@ -13,13 +13,13 @@ sap.ui.define([
     function (Controller, History, MessageBox, UploadCollectionParameter) {
         "use strict";
 
-        function onBack(oEvent) {
+        function onCancel(oEvent) {
 
             sap.m.MessageBox.confirm(this.oView.getModel("i18n").getResourceBundle().getText("preguntaCancelar"), {
                 onClose: function (oAction) {
                     if (oAction === "OK") {
                         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                        oRouter.navTo("menu", {}, true);
+                        oRouter.navTo("Menu", {}, true);
                     }
                 }.bind(this)
             });
@@ -27,7 +27,7 @@ sap.ui.define([
         }
 
         function onBeforeRendering() {
-            this._wizard = this.byId("CreateEmployeetWizard");
+            this._wizard = this.byId("CreateEmployeeWizard");
 
             this._model = new sap.ui.model.json.JSONModel({});
             this.getView().setModel(this._model);
@@ -41,13 +41,13 @@ sap.ui.define([
 
         function toNavPass2(oEvent) {
             //Paso 1
-            var dataEmployeeStep = this.byId("WizardPass1");
+            var dataEmployeeStep = this.byId("WizardPass2");
             //Paso 2
-            var typeEmployeeStep = this.byId("WizardPass2");
+            var typeEmployeeStep = this.byId("WizardPass1");
 
             //Se obtiene el tipo seleccionado con el "CustomData"
             var button = oEvent.getSource();
-            var typeEmployee = button.data("typeEmployee");
+            var typeEmployee = button.data("buttonTypeEmployee");
 
             //Dependiendo del tipo, el salario bruto por defecto es:
             // Interno: 24000
@@ -150,9 +150,9 @@ sap.ui.define([
             }
 
             if (isValid) {
-                this._wizard.validateStep(this.byId("WizardPass2"));
+                this._wizard.validateStep(this.byId("dataEmployeeStep"));
             } else {
-                this._wizard.invalidateStep(this.byId("WizardPass2"));
+                this._wizard.invalidateStep(this.byId("dataEmployeeStep"));
             }
             //Si hay callback se devuelve el valor isValid
             if (callback) {
@@ -165,7 +165,7 @@ sap.ui.define([
             this.checkDataEmployee(oEvent, function (isValid) {
                 if (isValid) {
                     //Se navega a la página review
-                    var wizardNavContainer = this.byId("CreateEmployeetWizard");
+                    var wizardNavContainer = this.byId("wizardNavContainer");
                     wizardNavContainer.to(this.byId("ReviewPage"));
                     //Se obtiene los archivos subidos
                     var uploadCollection = this.byId("UploadCollection");
@@ -188,7 +188,7 @@ sap.ui.define([
         }
 
         function _editStep(step) {
-            var wizardNavContainer = this.byId("CreateEmployeetWizard");
+            var wizardNavContainer = this.byId("wizardNavContainer");
             var fnAfterNavigate = function () {
                 this._wizard.goToStep(this.byId(step));
                 wizardNavContainer.detachAfterNavigate(fnAfterNavigate);
@@ -234,7 +234,7 @@ sap.ui.define([
                     sap.m.MessageBox.information(this.oView.getModel("i18n").getResourceBundle().getText("empleadoNuevo") + ": " + this.newUser, {
                         onClose: function () {
 
-                            var wizardNavContainer = this.byId("CreateEmployeetWizard");
+                            var wizardNavContainer = this.byId("wizardNavContainer");
                             wizardNavContainer.back();
 
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -276,7 +276,7 @@ sap.ui.define([
         }
 
         return Controller.extend("logaligroup.HTML5Project.controller.CreateEmployee", {
-            onBack: onBack,
+            onCancel: onCancel,
             onBeforeRendering: onBeforeRendering,
             toNavPass2: toNavPass2,
             checkDNI: checkDNI,
