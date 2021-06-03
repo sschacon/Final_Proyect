@@ -117,7 +117,7 @@
                     "target": [
                         "TargetDisplayEmployee"
                     ]
-                },                
+                }                
             ],
             "targets": {
                 "Targetmenu": {
@@ -140,7 +140,7 @@
                     "viewId": "DisplayEmployee",
                     "transition": "slide",
                     "clearControlAggregation": true
-                },                
+                }                
             }
         }
     }
