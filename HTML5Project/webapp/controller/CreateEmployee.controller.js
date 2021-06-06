@@ -150,9 +150,9 @@ sap.ui.define([
             }
 
             if (isValid) {
-                this._wizard.validateStep(this.byId("dataEmployeeStep"));
+                this._wizard.validateStep(this.byId("WizardPass2"));
             } else {
-                this._wizard.invalidateStep(this.byId("dataEmployeeStep"));
+                this._wizard.invalidateStep(this.byId("WizardPass2"));
             }
             //Si hay callback se devuelve el valor isValid
             if (callback) {
@@ -264,7 +264,7 @@ sap.ui.define([
         function onBeforeUploadStart(oEvent) {
             var oCustomerHeaderSlug = new UploadCollectionParameter({
                 name: "slug",
-                value: this.getOwnerComponent().SapId + ";" + this.newUser + ";" + oEvent.getParameter("fileName")
+                value: this.getOwnerComponent().SapId+";"+this.newUser+";"+oEvent.getParameter("fileName")
             });
             oEvent.getParameters().addHeaderParameter(oCustomerHeaderSlug);
         }

@@ -16,7 +16,7 @@
             "version": "1.40.12"
         },
         "dataSources": {
-            "mainService": {
+            "ZEMPLOYEES_SRV": {
                 "uri": "sap/opu/odata/sap/ZEMPLOYEES_SRV/",
                 "type": "OData",
                 "settings": {
@@ -69,14 +69,15 @@
                     "bundleName": "logaligroup.HTML5Project.i18n.i18n"
                 }
             },
-            "": {
-                "dataSource": "mainService",
-                "preload": true,
+            "odataModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
                 "settings": {
-                    "defaultBindingMode": "TwoWay",
-                    "defaultCountMode": "Inline",
-                    "refreshAfterChange": false
-                }
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZEMPLOYEES_SRV",
+                "preload": true
             }
         },
         "resources": {
@@ -101,46 +102,50 @@
                     "name": "menu",
                     "pattern": "",
                     "target": [
-                        "Targetmenu"
+                        "menu"
                     ]
                 },
                 {
                     "name": "CreateEmployee",
                     "pattern": "CreateEmployee",
                     "target": [
-                        "TargetCreateEmployee"
+                        "CreateEmployee"
                     ]
                 },
                 {
                     "name": "DisplayEmployee",
                     "pattern": "DisplayEmployee",
                     "target": [
-                        "TargetDisplayEmployee"
+                        "DisplayEmployee"
                     ]
-                }                
+                }
             ],
             "targets": {
-                "Targetmenu": {
+                "menu": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": true,
                     "viewId": "Menu",
                     "viewName": "Menu"
                 },
-                "TargetCreateEmployee": {
+                "App": {
+                    "viewType": "XML",
+                    "viewName": "App"
+                },
+                "CreateEmployee": {
                     "viewType": "XML",
                     "viewName": "CreateEmployee",
                     "viewId": "CreateEmployee",
                     "transition": "slide",
                     "clearControlAggregation": true
                 },
-                "TargetDisplayEmployee": {
+                "DisplayEmployee": {
                     "viewType": "XML",
                     "viewName": "DisplayEmployee",
                     "viewId": "DisplayEmployee",
                     "transition": "slide",
                     "clearControlAggregation": true
-                }                
+                }
             }
         }
     }

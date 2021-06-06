@@ -15,20 +15,20 @@
                                     <TileContent footer="{i18n>crearEmpleado}">
                                     </TileContent>
                                 </GenericTile>
-                            	<GenericTile headerImage="sap-icon://employee-lookup"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  press="press">
+                            	<GenericTile headerImage="sap-icon://employee-lookup"  
+                                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  
+                                             press="onNavToDisplayEmployee">
                                     <TileContent footer="{i18n>verEmpleado}">
                                     </TileContent>
                                 </GenericTile>                                
                         </content>
             	    </Panel>
-	                <Panel expandable="true" headerText="{i18n>pedidos}" width="auto" class="sapUiResponsiveMargin" expanded="true">
-                        <content>
-                            	<GenericTile headerImage="sap-icon://signature"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  press="press">
-                                    <TileContent footer="{i18n>firmarPedido}">
-                                    </TileContent>
-                                </GenericTile>                            
-                        </content>
-            	    </Panel>              
+						<Panel headerText="{i18n>pedidos}"  expandable="true" expanded="true">
+							<GenericTile id="linkFirmarPedido"  headerImage="sap-icon://signature" class="sapUiTinyMarginBegin sapUiTinyMarginTop" url="https://976eaf81trial-dev-logali-approuter.cfapps.eu10.hana.ondemand.com/logaligroupEmployees/index.html">
+								<TileContent footer="{i18n>firmarPedido}">
+								</TileContent>
+							</GenericTile>
+						</Panel>         
                     </content>
 				</Page>
 			</pages>
