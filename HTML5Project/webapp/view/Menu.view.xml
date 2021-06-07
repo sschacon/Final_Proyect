@@ -2,36 +2,28 @@
           xmlns:mvc="sap.ui.core.mvc" 
           displayBlock="true" 
           xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>menuPrincipal}">
-					<content>
-	                <Panel expandable="true" headerText="{i18n>empleados}" width="auto" class="sapUiResponsiveMargin" expanded="true">
-                        <content>
-                            	<GenericTile headerImage="sap-icon://add-employee"  
-                                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  
-                                             press="onNavToCreateEmployee">
-                                    <TileContent footer="{i18n>crearEmpleado}">
-                                    </TileContent>
-                                </GenericTile>
-                            	<GenericTile headerImage="sap-icon://employee-lookup"  
-                                             class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  
-                                             press="onNavToDisplayEmployee">
-                                    <TileContent footer="{i18n>verEmpleado}">
-                                    </TileContent>
-                                </GenericTile>                                
-                        </content>
-            	    </Panel>
-						<Panel headerText="{i18n>pedidos}"  expandable="true" expanded="true">
-							<GenericTile id="linkFirmarPedido"  headerImage="sap-icon://signature" class="sapUiTinyMarginBegin sapUiTinyMarginTop" url="https://976eaf81trial-dev-logali-approuter.cfapps.eu10.hana.ondemand.com/logaligroupEmployees/index.html">
-								<TileContent footer="{i18n>firmarPedido}">
-								</TileContent>
-							</GenericTile>
-						</Panel>         
-                    </content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+        <Page id="page" title="{i18n>menuPrincipal}">
+            <content>
+                 <Panel expandable="true" headerText="{i18n>empleados}" width="auto" class="sapUiResponsiveMargin" expanded="true">
+                        <GenericTile headerImage="sap-icon://add-employee"  
+                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  
+                                        press="onNavToCreateEmployee">
+                            <TileContent footer="{i18n>crearEmpleado}">
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile headerImage="sap-icon://employee-lookup"  
+                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"  
+                                        press="onNavToDisplayEmployee">
+                            <TileContent footer="{i18n>verEmpleado}">
+                            </TileContent>
+                        </GenericTile>                                
+                </Panel>
+                <Panel headerText="{i18n>pedidos}"  expandable="true" expanded="true">
+                    <GenericTile id="linkFirmarPedido"  headerImage="sap-icon://signature" class="sapUiTinyMarginBegin sapUiTinyMarginTop" url="https://976eaf81trial-dev-logali-approuter.cfapps.eu10.hana.ondemand.com/logaligroupEmployees/index.html">
+                        <TileContent footer="{i18n>firmarPedido}">
+                        </TileContent>
+                    </GenericTile>
+                </Panel>      
+            </content>   
+           </Page>
 </mvc:View>

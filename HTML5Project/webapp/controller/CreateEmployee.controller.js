@@ -13,13 +13,17 @@ sap.ui.define([
     function (Controller, History, MessageBox, UploadCollectionParameter) {
         "use strict";
 
-        function onCancel(oEvent) {
-
+        //Función al cancelar la creación
+        function onCancel() {
+            //Se muestra un mensaje de confirmación
             sap.m.MessageBox.confirm(this.oView.getModel("i18n").getResourceBundle().getText("preguntaCancelar"), {
                 onClose: function (oAction) {
                     if (oAction === "OK") {
+                        //Regresamos al menú principal
+                        //Se obtiene el conjuntos de routers del programa
                         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                        oRouter.navTo("Menu", {}, true);
+                        //Se navega hacia el router "menu"
+                        oRouter.navTo("menu", {}, true);
                     }
                 }.bind(this)
             });
@@ -264,7 +268,7 @@ sap.ui.define([
         function onBeforeUploadStart(oEvent) {
             var oCustomerHeaderSlug = new UploadCollectionParameter({
                 name: "slug",
-                value: this.getOwnerComponent().SapId+";"+this.newUser+";"+oEvent.getParameter("fileName")
+                value: this.getOwnerComponent().SapId + ";" + this.newUser + ";" + oEvent.getParameter("fileName")
             });
             oEvent.getParameters().addHeaderParameter(oCustomerHeaderSlug);
         }
